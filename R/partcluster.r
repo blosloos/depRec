@@ -313,11 +313,11 @@ partcluster <- function(
 			}
 		}
 	}
-	index <- .Call("_enviMass_indexed",
+	index <- .Call("_depRec_indexed",
 		as.integer(profileList[[2]][,"profileIDs"]),
 		as.integer(startat),
 		as.integer(27),
-		PACKAGE = "enviMass"
+		PACKAGE = "depRec"
 	)
 	index <- index[index[,1]!=0,]
 	index[,4] <- seq(length(index[,4]))
