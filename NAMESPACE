@@ -1,3 +1,5 @@
+useDynLib(depRec)
+
 export(agglomer)
 export(partcluster)
 export(recalib)

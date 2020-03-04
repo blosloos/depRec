@@ -28,23 +28,23 @@ agglomer <- function(
   if(!is.logical(ppm)) stop("ppm must be logical; aborted.")
   ##############################################################################
   if(ppm){ppm2<-1}else{ppm2<-0}
-  part <- .Call("_enviMass_Cagglom",
+  part <- .Call("_depRec_Cagglom",
     as.numeric(profileList[[2]][,1]),
     as.numeric(profileList[[2]][,3]),
     as.integer(profileList[[2]][,6]),
     as.integer(ppm2),
     as.numeric((dmass*2)+1),
     as.numeric(dret),
-    PACKAGE="enviMass" 
+    PACKAGE="depRec" 
   )
   profileList[[2]][,7]<-part;
   profileList[[2]]<-profileList[[2]][order(profileList[[2]][,7],decreasing=FALSE),]
   maxit<-max(profileList[[2]][,7])
-  index<- .Call("_enviMass_indexed",
+  index<- .Call("_depRec_indexed",
     as.integer(profileList[[2]][,7]),
     as.integer(maxit),
     as.integer(3),
-    PACKAGE="enviMass" 
+    PACKAGE="depRec" 
   )
   index<-index[index[,1]!=0,]
   colnames(index)<-c("start_ID","end_ID","number_peaks")
